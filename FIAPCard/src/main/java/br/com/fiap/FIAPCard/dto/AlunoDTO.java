@@ -10,28 +10,22 @@ public class AlunoDTO {
 
     private Integer id;
     private String nome;
-	private Integer rm;
-    private Integer numeroCartao;
-    private Integer digitoVerificadorCartao;
+	private Long cpf;
     private ZonedDateTime dataCriacao;
     private ZonedDateTime dataAtualizacao;
 
     public AlunoDTO(){}
 
-    public AlunoDTO(Integer id, String nome, Integer rm, Integer numeroCartao, Integer digitoVerificadorCartao) {
+    public AlunoDTO(Integer id, String nome, Long cpf) {
         this.id = id;
         this.nome = nome;
-        this.rm = rm;
-        this.numeroCartao = numeroCartao;
-        this.digitoVerificadorCartao = digitoVerificadorCartao;
+        this.cpf = cpf;
     }
 
     public AlunoDTO(Aluno aluno) {
         this.id = aluno.getId();
         this.nome = aluno.getNome();
-        this.rm = aluno.getRm();
-        this.numeroCartao = aluno.getNumeroCartao();
-        this.digitoVerificadorCartao = aluno.getDigitoVerificadorCartao();
+        this.cpf = aluno.getCpf();
         this.dataCriacao = convertToZonedDateTime(aluno.getDataCriacao());
         this.dataAtualizacao = convertToZonedDateTime(aluno.getDataAtualizacao());
     }
@@ -59,29 +53,13 @@ public class AlunoDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-	public Integer getRm() {
-		return rm;
+	
+	public Long getCpf() {
+		return cpf;
 	}
 
-	public void setRm(Integer rm) {
-		this.rm = rm;
-	}
-
-	public Integer getNumeroCartao() {
-		return numeroCartao;
-	}
-
-	public void setNumeroCartao(Integer numeroCartao) {
-		this.numeroCartao = numeroCartao;
-	}
-
-	public Integer getDigitoVerificadorCartao() {
-		return digitoVerificadorCartao;
-	}
-
-	public void setDigitoVerificadorCartao(Integer digitoVerificadorCartao) {
-		this.digitoVerificadorCartao = digitoVerificadorCartao;
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
 	}
 
 	public ZonedDateTime getDataCriacao() {

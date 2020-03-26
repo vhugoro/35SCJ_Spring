@@ -22,13 +22,7 @@ public class Aluno {
     private String nome;
 
     @Column
-    private Integer rm;
-
-    @Column
-    private Integer numeroCartao;
-
-    @Column
-    private Integer digitoVerificadorCartao;
+    private Long cpf;
 
     @Column(name = "created_date")
     @CreatedDate
@@ -42,9 +36,7 @@ public class Aluno {
 
     public Aluno(AlunoDTO alunoDTO) {
         this.nome = alunoDTO.getNome();
-        this.rm = alunoDTO.getRm();
-        this.numeroCartao = alunoDTO.getNumeroCartao();
-        this.digitoVerificadorCartao = alunoDTO.getDigitoVerificadorCartao();
+        this.cpf = alunoDTO.getCpf();
     }
 
 	public Integer getId() {
@@ -61,30 +53,14 @@ public class Aluno {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}	
+
+	public Long getCpf() {
+		return cpf;
 	}
 
-	public Integer getRm() {
-		return rm;
-	}
-
-	public void setRm(Integer rm) {
-		this.rm = rm;
-	}
-
-	public Integer getNumeroCartao() {
-		return numeroCartao;
-	}
-
-	public void setNumeroCartao(Integer numeroCartao) {
-		this.numeroCartao = numeroCartao;
-	}
-
-	public Integer getDigitoVerificadorCartao() {
-		return digitoVerificadorCartao;
-	}
-
-	public void setDigitoVerificadorCartao(Integer digitoVerificadorCartao) {
-		this.digitoVerificadorCartao = digitoVerificadorCartao;
+	public void setCpf(Long cpf) {
+		this.cpf = cpf;
 	}
 
 	public Date getDataCriacao() {

@@ -55,9 +55,7 @@ public class AlunoServiceImpl implements AlunoService {
         Aluno aluno =  getAluno(id);
         
         aluno.setNome(alunoDTO.getNome());
-        aluno.setRm(alunoDTO.getRm());
-        aluno.setNumeroCartao(alunoDTO.getNumeroCartao());
-        aluno.setDigitoVerificadorCartao(alunoDTO.getDigitoVerificadorCartao());
+        aluno.setCpf(alunoDTO.getCpf());
         
         return saveAndGetAlunoDTO(aluno);
     }
