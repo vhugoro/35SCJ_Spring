@@ -3,6 +3,7 @@ package br.com.fiap.FIAPCard.service.impl;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,12 +15,9 @@ import br.com.fiap.FIAPCard.service.AlunoService;
 
 @Service
 public class AlunoServiceImpl implements AlunoService {
-
+	
+	@Autowired
     private AlunoRepository alunoRepository;
-
-    public AlunoServiceImpl(AlunoRepository alunoRepository) {
-        this.alunoRepository = alunoRepository;
-    }
 
     @Override
     public List<AlunoDTO> findAll() {
