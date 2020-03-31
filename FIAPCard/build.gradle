@@ -12,10 +12,6 @@ repositories {
 	mavenCentral()
 }
 
-ext {
-	set('springBootAdminVersion', "2.2.1")
-}
-
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	
