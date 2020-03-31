@@ -15,5 +15,8 @@ public interface AlunoRepository extends JpaRepository<Aluno, Integer>{
 
     @Query("from Aluno a where a.nome like %:nome%")
     List<Aluno> findPorNome(String nome);
+    
+    @Query("from Aluno a where a.rm = :rm")
+    Aluno findPorRm(Integer rm);
 
 }

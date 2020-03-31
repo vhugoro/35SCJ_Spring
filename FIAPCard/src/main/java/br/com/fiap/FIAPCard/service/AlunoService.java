@@ -8,6 +8,7 @@ public interface AlunoService {
 
     List<AlunoDTO> findAll();
     AlunoDTO findById(Integer id);
+    AlunoDTO findByRm(Integer rm);
     AlunoDTO create(AlunoDTO alunoDTO);
     AlunoDTO update(Integer id, AlunoDTO alunoDTO);
     void delete(Integer id);

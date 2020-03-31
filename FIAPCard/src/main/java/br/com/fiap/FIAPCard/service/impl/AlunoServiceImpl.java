@@ -35,6 +35,11 @@ public class AlunoServiceImpl implements AlunoService {
     public AlunoDTO findById(Integer id) {
         return saveAndGetAlunoDTO(getAluno(id));
     }
+    
+    @Override
+    public AlunoDTO findByRm(Integer rm) {
+    	return new AlunoDTO(this.alunoRepository.findPorRm(rm));
+    }
 
     private Aluno getAluno(Integer id) {
         return alunoRepository.findById(id)
@@ -53,7 +58,8 @@ public class AlunoServiceImpl implements AlunoService {
         Aluno aluno =  getAluno(id);
         
         aluno.setNome(alunoDTO.getNome());
-        aluno.setCpf(alunoDTO.getCpf());
+        aluno.setRm(alunoDTO.getRm());
+        aluno.setIdentificador(alunoDTO.getIdentificador());
         
         return saveAndGetAlunoDTO(aluno);
     }

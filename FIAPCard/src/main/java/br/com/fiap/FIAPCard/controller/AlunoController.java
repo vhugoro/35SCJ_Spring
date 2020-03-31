@@ -37,6 +37,11 @@ public class AlunoController {
     public AlunoDTO findById(@PathVariable Integer id) {
         return service.findById(id);
     }
+    
+    @GetMapping("{rm}")
+    public AlunoDTO findByRm(@PathVariable Integer rm) {
+    	return service.findByRm(rm);
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

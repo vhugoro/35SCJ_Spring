@@ -22,7 +22,10 @@ public class Aluno {
     private String nome;
 
     @Column
-    private Long cpf;
+    private Integer rm;
+    
+    @Column
+    private String identificador;
 
     @Column(name = "created_date")
     @CreatedDate
@@ -36,7 +39,8 @@ public class Aluno {
 
     public Aluno(AlunoDTO alunoDTO) {
         this.nome = alunoDTO.getNome();
-        this.cpf = alunoDTO.getCpf();
+        this.rm = alunoDTO.getRm();
+        this.identificador = alunoDTO.getIdentificador();
     }
 
 	public Integer getId() {
@@ -55,12 +59,20 @@ public class Aluno {
 		this.nome = nome;
 	}	
 
-	public Long getCpf() {
-		return cpf;
+	public Integer getRm() {
+		return this.rm;
 	}
 
-	public void setCpf(Long cpf) {
-		this.cpf = cpf;
+	public void setRm(Integer rm) {
+		this.rm = rm;
+	}
+	
+	public String getIdentificador() {
+		return this.getIdentificador();
+	}
+	
+	public void setIdentificador(String identificador) {
+		this.identificador = identificador;
 	}
 
 	public Date getDataCriacao() {
