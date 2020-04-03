@@ -60,7 +60,7 @@ public class FiapCardBatchApplication {
 		return new JdbcBatchItemWriterBuilder()
 				.beanMapped()
 				.dataSource(dataSource)
-				.sql("insert into tb_aluno (nome, rm, identificador) values (nome, rm, identificador)")
+				.sql("insert into tb_aluno (nome, rm, identificador) values (:nome, :rm, :identificador)")
 				.build();
 	}
 	
