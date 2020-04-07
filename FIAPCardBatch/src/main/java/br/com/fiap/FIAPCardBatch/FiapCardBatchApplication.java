@@ -15,7 +15,6 @@ import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
-import org.springframework.batch.item.file.transform.Range;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
@@ -34,11 +33,13 @@ public class FiapCardBatchApplication {
 	}
 	
 	@Bean
-	public FlatFileItemReader<Aluno> itemReader(@Value("%{file.input}") Resource resource){
+	public FlatFileItemReader<Aluno> itemReader(@Value("${file.input}") Resource resource) {
+//		ClassPathResource pathResource = new ClassPathResource(resource.getFilename());
+		
 		return new FlatFileItemReaderBuilder<Aluno>()
-				.fixedLength()
-				.columns(new Range(1,41), new Range(42,48), new Range(50,56))
-				.names("nome", "rm", "identificador")
+				.delimited().delimiter(";")
+//				.columns(new Range(1,41), new Range(42,49), new Range(50,55))
+				.names("rm", "nome")
 				.resource(resource)
 				.targetType(Aluno.class)
 				.name("File Item Reader")
@@ -60,7 +61,7 @@ public class FiapCardBatchApplication {
 		return new JdbcBatchItemWriterBuilder()
 				.beanMapped()
 				.dataSource(dataSource)
-				.sql("insert into tb_aluno (nome, rm, identificador) values (:nome, :rm, :identificador)")
+				.sql("insert into tb_aluno (rm, nome) values (:rm, :nome)")
 				.build();
 	}
 	
