@@ -1,4 +1,4 @@
-CREATE TABLE TB_TRANSACAO (
+CREATE TABLE if not exists TB_TRANSACAO (
   id integer NOT NULL AUTO_INCREMENT,
   aluno_id integer NOT NULL,
   autorizadora varchar(20),
