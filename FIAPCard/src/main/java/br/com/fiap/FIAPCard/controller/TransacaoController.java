@@ -1,17 +1,25 @@
 package br.com.fiap.FIAPCard.controller;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -53,4 +61,32 @@ public class TransacaoController {
         this.serviceTransacao.delete(id);
     }
 
+	@GetMapping(value="/get-file",
+			produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
+			)
+	public @ResponseBody byte[] getFileExtrato() throws IOException {
+		final List<TransacaoDTO> trans = serviceTransacao.findAll();
+		
+		FileWriter arquivo;
+		
+		try {
+			arquivo = new FileWriter(new File("extrato.txt"));
+			trans.stream().forEach(t -> {
+				try {
+					arquivo.write(t.toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			});
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	    InputStream in = getClass()
+	      .getResourceAsStream("br/com/fiap/FIAPCard/extrato.txt");
+
+	    return Files.readAllBytes(Paths.get("extrato.txt"));
+	}
 }
