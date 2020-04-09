@@ -1,13 +1,16 @@
 package br.com.fiap.FIAPCard.entity;
 
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import br.com.fiap.FIAPCard.dto.AlunoDTO;
-
-import javax.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "TB_ALUNO")
@@ -24,17 +27,10 @@ public class Aluno {
     @Column
     private String nome;
     
-    @Column(name = "created_date")
-    @CreatedDate
-    private Date dataCriacao;
-
-    @Column(name = "updated_date")
-    @LastModifiedDate
-    private Date dataAtualizacao;
-
     public Aluno(){}
 
     public Aluno(AlunoDTO alunoDTO) {
+    	this.id = alunoDTO.getId();
         this.nome = alunoDTO.getNome();
         this.rm = alunoDTO.getRm();
     }
@@ -63,19 +59,4 @@ public class Aluno {
 		this.rm = rm;
 	}
 	
-	public Date getDataCriacao() {
-		return dataCriacao;
-	}
-
-	public void setDataCriacao(Date dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-
-	public Date getDataAtualizacao() {
-		return dataAtualizacao;
-	}
-
-	public void setDataAtualizacao(Date dataAtualizacao) {
-		this.dataAtualizacao = dataAtualizacao;
-	}
 }

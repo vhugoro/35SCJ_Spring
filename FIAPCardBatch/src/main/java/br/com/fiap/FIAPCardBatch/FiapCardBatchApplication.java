@@ -34,11 +34,9 @@ public class FiapCardBatchApplication {
 	
 	@Bean
 	public FlatFileItemReader<Aluno> itemReader(@Value("${file.input}") Resource resource) {
-//		ClassPathResource pathResource = new ClassPathResource(resource.getFilename());
 		
 		return new FlatFileItemReaderBuilder<Aluno>()
 				.delimited().delimiter(";")
-//				.columns(new Range(1,41), new Range(42,49), new Range(50,55))
 				.names("rm", "nome")
 				.resource(resource)
 				.targetType(Aluno.class)
@@ -51,7 +49,6 @@ public class FiapCardBatchApplication {
 		return aluno -> {
 			aluno.setNome(aluno.getNome().toUpperCase());
 			aluno.setRm(aluno.getRm());
-			aluno.setIdidentificador(aluno.getIdidentificador());
 			return aluno;
 		};
 	}

@@ -38,9 +38,14 @@ public class AlunoController {
         return service.findById(id);
     }
     
-    @GetMapping("{rm}")
+    @GetMapping("/rm/{rm}")
     public AlunoDTO findByRm(@PathVariable Integer rm) {
     	return service.findByRm(rm);
+    }
+    
+    @GetMapping("/nome/{nome}")
+    public List<AlunoDTO> findByNome(@PathVariable String nome) {
+    	return service.findByNome(nome);
     }
 
     @PostMapping

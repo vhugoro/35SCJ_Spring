@@ -11,8 +11,6 @@ public class AlunoDTO {
     private Integer id;
     private String nome;
 	private Integer rm;
-    private ZonedDateTime dataCriacao;
-    private ZonedDateTime dataAtualizacao;
 
     public AlunoDTO(){}
 
@@ -26,16 +24,6 @@ public class AlunoDTO {
         this.id = aluno.getId();
         this.nome = aluno.getNome();
         this.rm = aluno.getRm();
-        this.dataCriacao = convertToZonedDateTime(aluno.getDataCriacao());
-        this.dataAtualizacao = convertToZonedDateTime(aluno.getDataAtualizacao());
-    }
-
-    private ZonedDateTime convertToZonedDateTime(Date dataAtualizacao) {
-        if(dataAtualizacao != null){
-            return ZonedDateTime.ofInstant(dataAtualizacao.toInstant(), ZoneOffset.systemDefault());
-        } else {
-            return null;
-        }
     }
 
     public Integer getId() {
@@ -60,22 +48,6 @@ public class AlunoDTO {
 
 	public void setRm(Integer rm) {
 		this.rm = rm;
-	}
-	
-	public ZonedDateTime getDataCriacao() {
-		return dataCriacao;
-	}
-
-	public void setDataCriacao(ZonedDateTime dataCriacao) {
-		this.dataCriacao = dataCriacao;
-	}
-
-	public ZonedDateTime getDataAtualizacao() {
-		return dataAtualizacao;
-	}
-
-	public void setDataAtualizacao(ZonedDateTime dataAtualizacao) {
-		this.dataAtualizacao = dataAtualizacao;
 	}
     
 }

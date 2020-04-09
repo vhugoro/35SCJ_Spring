@@ -13,12 +13,6 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
-  security:
-    user:
-      name: admin
-      password: fiap
-      roles: ADMIN
-
 
 file:  
   path: /Users/zanchetta/fiapcard/alunos.txt
