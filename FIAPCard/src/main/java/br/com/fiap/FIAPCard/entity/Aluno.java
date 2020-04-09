@@ -19,14 +19,11 @@ public class Aluno {
     private Integer id;
 
     @Column
-    private String nome;
-
-    @Column
     private Integer rm;
     
     @Column
-    private String identificador;
-
+    private String nome;
+    
     @Column(name = "created_date")
     @CreatedDate
     private Date dataCriacao;
@@ -40,7 +37,6 @@ public class Aluno {
     public Aluno(AlunoDTO alunoDTO) {
         this.nome = alunoDTO.getNome();
         this.rm = alunoDTO.getRm();
-        this.identificador = alunoDTO.getIdentificador();
     }
 
 	public Integer getId() {
@@ -67,14 +63,6 @@ public class Aluno {
 		this.rm = rm;
 	}
 	
-	public String getIdentificador() {
-		return this.getIdentificador();
-	}
-	
-	public void setIdentificador(String identificador) {
-		this.identificador = identificador;
-	}
-
 	public Date getDataCriacao() {
 		return dataCriacao;
 	}

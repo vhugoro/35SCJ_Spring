@@ -59,7 +59,6 @@ public class AlunoServiceImpl implements AlunoService {
         
         aluno.setNome(alunoDTO.getNome());
         aluno.setRm(alunoDTO.getRm());
-        aluno.setIdentificador(alunoDTO.getIdentificador());
         
         return saveAndGetAlunoDTO(aluno);
     }

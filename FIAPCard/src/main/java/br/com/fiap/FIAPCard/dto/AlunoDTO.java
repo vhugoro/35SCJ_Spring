@@ -11,24 +11,21 @@ public class AlunoDTO {
     private Integer id;
     private String nome;
 	private Integer rm;
-	private String identificador;
     private ZonedDateTime dataCriacao;
     private ZonedDateTime dataAtualizacao;
 
     public AlunoDTO(){}
 
-    public AlunoDTO(Integer id, String nome, Integer rm, String identificador) {
+    public AlunoDTO(Integer id, String nome, Integer rm) {
         this.id = id;
         this.nome = nome;
         this.rm = rm;
-        this.identificador = identificador;
     }
 
     public AlunoDTO(Aluno aluno) {
         this.id = aluno.getId();
         this.nome = aluno.getNome();
         this.rm = aluno.getRm();
-        this.identificador = aluno.getIdentificador();
         this.dataCriacao = convertToZonedDateTime(aluno.getDataCriacao());
         this.dataAtualizacao = convertToZonedDateTime(aluno.getDataAtualizacao());
     }
@@ -65,14 +62,6 @@ public class AlunoDTO {
 		this.rm = rm;
 	}
 	
-	public String getIdentificador() {
-		return this.identificador;
-	}
-	
-	public void setIdentificador(String identificador) {
-		this.identificador = identificador;
-	}
-
 	public ZonedDateTime getDataCriacao() {
 		return dataCriacao;
 	}
