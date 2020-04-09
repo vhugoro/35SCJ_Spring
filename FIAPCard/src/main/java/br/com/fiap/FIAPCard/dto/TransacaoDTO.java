@@ -50,5 +50,10 @@ public class TransacaoDTO {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
+	
+	@Override
+	public String toString() {
+		return "Aluno: " + aluno.getNome() + " / Autorizadora: " + autorizadora + " / Valor: " + valor.toString();
+	}
     
 }

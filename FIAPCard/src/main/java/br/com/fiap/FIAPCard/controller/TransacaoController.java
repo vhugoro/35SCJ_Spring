@@ -89,4 +89,34 @@ public class TransacaoController {
 
 	    return Files.readAllBytes(Paths.get("extrato.txt"));
 	}
+	
+	@GetMapping(value="/get-file/rm/{rm}",
+			produces = MediaType.APPLICATION_OCTET_STREAM_VALUE
+			)
+	public @ResponseBody byte[] getFileExtratoByRmAluno(@PathVariable Integer rm) throws IOException {
+		Aluno aluno = new Aluno(serviceAluno.findByRm(rm));
+		List<TransacaoDTO> trans = serviceTransacao.findByAluno(aluno);
+		
+		FileWriter arquivo;
+		
+		try {
+			arquivo = new FileWriter(new File("extrato.txt"));
+			trans.stream().forEach(t -> {
+				try {
+					arquivo.write(t.toString());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			});
+		}catch (IOException e) {
+			e.printStackTrace();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+	    InputStream in = getClass()
+	      .getResourceAsStream("br/com/fiap/FIAPCard/extrato.txt");
+
+	    return Files.readAllBytes(Paths.get("extrato.txt"));
+	}
 }
