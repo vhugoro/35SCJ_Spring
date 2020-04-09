@@ -1,7 +1,6 @@
 package br.com.fiap.FIAPCard.entity;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,7 +15,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
 
-import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import br.com.fiap.FIAPCard.dto.Autorizadora;
@@ -42,11 +40,7 @@ public class Transacao {
 	
 	@Column
 	private BigDecimal valor;
-	
-	@Column
-	@CreatedDate
-	private Date data;
-	
+		
 	public Transacao() {
 		
 	}
@@ -87,14 +81,6 @@ public class Transacao {
 
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
-	}
-
-	public Date getData() {
-		return data;
-	}
-
-	public void setData(Date data) {
-		this.data = data;
 	}
 
 }

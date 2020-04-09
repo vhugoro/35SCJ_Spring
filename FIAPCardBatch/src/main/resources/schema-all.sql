@@ -4,3 +4,4 @@ CREATE TABLE if not exists TB_ALUNO (
   rm integer NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+

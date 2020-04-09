@@ -38,7 +38,19 @@ public class AlunoServiceImpl implements AlunoService {
     
     @Override
     public AlunoDTO findByRm(Integer rm) {
-    	return new AlunoDTO(this.alunoRepository.findPorRm(rm));
+    	return new AlunoDTO(this.alunoRepository.findByRm(rm));
+    }
+    
+    @Override
+    public List<AlunoDTO> findByNome(String nome) {
+    	List<Aluno> alunoList;
+        
+        alunoList = alunoRepository.findByNome(nome);
+
+        return alunoList
+                .stream()
+                .map(AlunoDTO::new)
+                .collect(Collectors.toList());
     }
 
     private Aluno getAluno(Integer id) {
