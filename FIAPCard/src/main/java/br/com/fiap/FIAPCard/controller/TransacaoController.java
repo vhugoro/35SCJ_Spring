@@ -3,7 +3,6 @@ package br.com.fiap.FIAPCard.controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -84,9 +83,6 @@ public class TransacaoController {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	    InputStream in = getClass()
-	      .getResourceAsStream("br/com/fiap/FIAPCard/extrato.txt");
-
 	    return Files.readAllBytes(Paths.get("extrato.txt"));
 	}
 }
