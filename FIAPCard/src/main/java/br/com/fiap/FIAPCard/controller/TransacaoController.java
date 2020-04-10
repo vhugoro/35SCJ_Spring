@@ -3,6 +3,7 @@ package br.com.fiap.FIAPCard.controller;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
@@ -66,17 +67,13 @@ public class TransacaoController {
 	public @ResponseBody byte[] getFileExtrato() throws IOException {
 		final List<TransacaoDTO> trans = serviceTransacao.findAll();
 		
-		FileWriter arquivo;
-		
 		try {
-			arquivo = new FileWriter(new File("extrato.txt"));
+			FileWriter arquivo = new FileWriter(new File("extrato.txt"));
+			PrintWriter gravarArq = new PrintWriter(arquivo);
 			trans.stream().forEach(t -> {
-				try {
-					arquivo.write(t.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				gravarArq.println(t.toString());
 			});
+			arquivo.close();
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -93,26 +90,20 @@ public class TransacaoController {
 		Aluno aluno = new Aluno(serviceAluno.findByRm(rm));
 		List<TransacaoDTO> trans = serviceTransacao.findByAluno(aluno);
 		
-		FileWriter arquivo;
-		
 		try {
-			arquivo = new FileWriter(new File("extrato.txt"));
+			FileWriter arquivo = new FileWriter(new File("extratoUser.txt"));
+			PrintWriter gravarArq = new PrintWriter(arquivo);
 			trans.stream().forEach(t -> {
-				try {
-					arquivo.write(t.toString());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+					gravarArq.println(t.toString());
 			});
+			arquivo.close();
 		}catch (IOException e) {
 			e.printStackTrace();
 		}
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-	    InputStream in = getClass()
-	      .getResourceAsStream("br/com/fiap/FIAPCard/extrato.txt");
 
-	    return Files.readAllBytes(Paths.get("extrato.txt"));
+	    return Files.readAllBytes(Paths.get("extratoUser.txt"));
 	}
 }
